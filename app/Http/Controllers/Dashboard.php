@@ -17,6 +17,7 @@ class Dashboard extends Controller
        $ultimosDados = Stock::whereDate('created_at', '=', $ultimaData)->get();
 
         return view('dashboard', compact('estoque', 'ultimosDados'));
+        // return redirect()->route('login');
     }
 
     public function deleteMultiples(Request $request){

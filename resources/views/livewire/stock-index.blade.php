@@ -139,7 +139,7 @@
                                                 </button>
                                             
                                                 <!-- Itens do Dropdown -->
-                                                <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" id="dropdown-menu">
+                                                <div class="origin-top-right absolute right-15 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" id="dropdown-menu">
                                                     <div class="py-1">
                                                         <button type="submit"  wire:click="excluirItensSelecionados" value="apagar" class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100 hover:text-red-900">Deletar selecionados</a>
                                                         
