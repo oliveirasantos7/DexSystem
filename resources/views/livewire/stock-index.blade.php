@@ -155,14 +155,14 @@
                                         <th scope="col" class="px-4 py-3" >Cod</th>
                                         <th scope="col" class="px-4 py-3">Imagem</th>
                                         <th scope="col" class="px-4 py-3">Perfil</th>
-                                        <th scope="col" class="px-4 py-3">Descrição</th>
+                                        <th scope="col" class="px-4 py-3">Desc</th>
                                         <th scope="col" class="px-4 py-3">Cor</th>
-                                        <th scope="col" class="px-4 py-3">Tamanho</th>
-                                        <th scope="col" class="px-4 py-3">Quantidade</th>
+                                        <th scope="col" class="px-4 py-3">Tam</th>
+                                        <th scope="col" class="px-4 py-3">Qtd</th>
                                         <th scope="col" class="px-4 py-3">Linha</th>
-                                        <th scope="col" class="px-4 py-3">Localização</th>
-                                        <th scope="col" class="px-4 py-3">Data de registro</th>
-                                        <th scope="col" class="px-4 py-3">Ultima atualização</th>
+                                        <th scope="col" class="px-4 py-3">Local</th>
+                                        <th scope="col" class="px-4 py-3">Data de reg.</th>
+                                        <th scope="col" class="px-4 py-3">Ultima atual</th>
                                         <th scope="col" class="px-4 py-3">
                                             <span class="sr-only">Actions</span>
                                         </th>
