@@ -132,19 +132,19 @@ return [
 
     'views' => true,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Features
-    |--------------------------------------------------------------------------
-    |
-    | Some of the Fortify features are optional. You may disable the features
-    | by removing them from this array. You're free to only remove some of
-    | these features or you can even remove all of these if you need to.
-    |
-    */
+  /*
+     |---------------------------------------------------------------- -------------------------
+     | Características
+     |---------------------------------------------------------------- -------------------------
+     |
+     | Alguns dos recursos do Fortify são opcionais. Você pode desativar os recursos
+     | removendo-os desta matriz. Você é livre para remover apenas alguns
+     | esses recursos ou você pode até mesmo remover todos eles se precisar.
+     |
+     */
 
     'features' => [
-        Features::registration(),
+        // Features::registration(),
         Features::resetPasswords(),
         // Features::emailVerification(),
         Features::updateProfileInformation(),
