@@ -58,6 +58,9 @@
                                         <option value="25">25</option>
                                         <option value="16">16</option>
                                         <option value="42">42</option>
+                                        <option value="Eng. vidro temperado">Eng. vidro temperado</option>
+                                        <option value="Box">Box</option>
+                                        <option value="Outros">Outros</option>
 
 
                                     </select>
@@ -116,6 +119,8 @@
                                         <option value="G7">G7</option>
                                         <option value="G8">G8</option>
                                         <option value="G9">G9</option>
+                                        <option value="Não definido">Não definido</option>
+ 
                                        
 
 
@@ -181,26 +186,35 @@
                                             {{ $stock->id }}</th>
                                             <th scope="row"
                                             class="px-4 py-3   font-medium text-gray-900 whitespace-nowrap  dark:text-white">
-                                        <img class="" src="{{Storage::url($stock->imagem) }}" alt="">
-                                        </th>
-                                        <td class="px-4 py-3">{{ $stock->perfil }}</td>
+                                         <img class="" src="{{Storage::url($stock->imagem) }}" alt="">
+                                         
 
-                                        <td class="px-4 py-3 text-green-500">
+                                        
+
+                                         
+                                        
+
+
+
+                                        </th>
+                                        <td class="px-4 py-3 text-green-500">{{ $stock->perfil }}</td>
+
+                                        <td class="px-4 py-3 ">
                                             {{ $stock->descri }}</td>
 
-                                        <td class="px-4 py-3  text-white">
+                                        <td class="px-4 py-3  text-green-500">
                                                 {{ $stock->cor }}</td>
 
                                         <td class="px-4 py-3 text-green-500">{{ $stock->tamanho}}</td>
 
-                                        <td class="px-4 py-3 text-green-500">{{ $stock->qtd }}</td>
+                                        <td class="px-4 py-3 ">{{ $stock->qtd }}</td>
 
                                         <td class="px-4 py-3 text-green-500">{{ $stock->linha}}</td>
 
                                         <td class="px-4 py-3">{{ $stock->loca }}</td>
 
                                         {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3">{{ \Carbon\Carbon::parse($stock->created_at)->format('d/m/Y') }}</td>
+                                        <td class="px-4 py-3 text-green-500">{{ \Carbon\Carbon::parse($stock->created_at)->format('d/m/Y') }}</td>
 
 
                                         {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
@@ -291,7 +305,7 @@
                         >
                     </div>
 
-                    {{-- @error('title')<span class="text-red-400">{{ $message }}</span>@enderror --}}
+                    @error('perfil')<span class="text-red-400">{{ $message }}</span>@enderror
 
 
                 </div>
@@ -310,7 +324,7 @@
                         >
                     </div>
 
-                    @error('title')<span class="text-red-400">{{ $message }}</span>@enderror
+                    @error('tamanho')<span class="text-red-400">{{ $message }}</span>@enderror
 
 
                 </div>
@@ -329,7 +343,7 @@
                         >
                     </div>
 
-                    @error('title')<span class="text-red-400">{{ $message }}</span>@enderror
+                    @error('qtd')<span class="text-red-400">{{ $message }}</span>@enderror
 
 
                 </div>
@@ -385,7 +399,7 @@
                         </select>
                     </div>
 
-                    {{-- @error('title')<span class="text-red-400">{{ $message }}</span>@enderror --}}
+                    @error('cor')<span class="text-red-400">{{ $message }}</span>@enderror
 
 
                 </div>
@@ -405,6 +419,12 @@
                         <option value="25">25</option>
                         <option value="16">16</option>
                         <option value="42">42</option>
+                        <option value="Eng. vidro temperado">Eng. vidro temperado</option>
+                        <option value="Box">Box</option>
+                        <option value="Outros">Outros</option>
+
+
+
                       </select>
                     </div>
 
@@ -440,20 +460,12 @@
                         <option value="G7">G7</option>
                         <option value="G8">G8</option>
                         <option value="G9">G9</option>
-
-
-
-
-                        
-
-
-
-
+                        <option value="Não definido">Não definido</option>
 
                       </select>
                     </div>
 
-                    {{-- @error('title')<span class="text-red-400">{{ $message }}</span>@enderror --}}
+                    @error('loca')<span class="text-red-400">{{ $message }}</span>@enderror
 
 
                 </div>
