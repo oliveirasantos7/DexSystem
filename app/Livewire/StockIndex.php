@@ -15,6 +15,7 @@ class StockIndex extends Component
     use WithPagination;
 
     public $showingStockModal = false;
+    public $showingNoteModal = false;
     public $showingDeleteStockModal = false;
     public $newImage;
     public $oldImage;
@@ -36,6 +37,7 @@ class StockIndex extends Component
     public $buscaLinha = '';
     public $buscaCor = '';
     public $buscaLocalizacao = '';
+    public $buscaId = '';
     public $sortBy = 'created_at';
     public $sortDir = 'DESC';
     public $itens;
@@ -52,6 +54,11 @@ class StockIndex extends Component
         $this->showingStockModal = true;
     }
 
+    public function showNoteModal(){
+
+        $this->reset();
+        $this->showingNoteModal = true;
+    }
     public function storeStock(){
 
         $this->validate([
@@ -92,20 +99,20 @@ class StockIndex extends Component
 
     
 
-    public function showEditStockModal($id){
-        $this->estoque = Stock::findOrFail($id); 
+        public function showEditStockModal($id){
+            $this->estoque = Stock::findOrFail($id); 
 
-        $this->perfil  = $this->estoque->perfil;
-        $this->descri =$this->estoque->descri;
-        $this->cor =$this->estoque->cor;
-        $this->tamanho =$this->estoque->tamanho;
-        $this->qtd =$this->estoque->qtd;
-        $this->linha =$this->estoque->linha;
-        $this->loca =$this->estoque->loca;
-        $this->oldImage =$this->estoque->imagem;
-        $this->showingStockModal = true;
-        $this->isEditMode = true;
-    }
+            $this->perfil  = $this->estoque->perfil;
+            $this->descri =$this->estoque->descri;
+            $this->cor =$this->estoque->cor;
+            $this->tamanho =$this->estoque->tamanho;
+            $this->qtd =$this->estoque->qtd;
+            $this->linha =$this->estoque->linha;
+            $this->loca =$this->estoque->loca;
+            $this->oldImage =$this->estoque->imagem;
+            $this->showingStockModal = true;
+            $this->isEditMode = true;
+        }
 
     public function updateStock(){
 
@@ -117,14 +124,16 @@ class StockIndex extends Component
             'tamanho' => 'required',
             'qtd' => 'required',
             'linha' => 'required',
-            
             'loca' => 'required',
         ]);
 
-        $image = $this->estoque->image;
+        $image = $this->oldImage; // Use a imagem antiga por padrão
+
+        // $image = $this->estoque->image;
         if($this->newImage){
             $image = $this->newImage->store('public/estoque');
         }
+        
 
         $this->estoque->update([
             'perfil'=> $this->perfil,
@@ -219,6 +228,9 @@ class StockIndex extends Component
        })
        ->when($this->buscaLocalizacao !== '', function($query){
         $query->where('loca', $this->buscaLocalizacao);
+       })
+       ->when($this->buscaId !== '', function($query){
+        $query->where('id', $this->buscaId);
        })
        ->orderBy($this->sortBy, $this->sortDir)
        ->paginate($this->perPage);

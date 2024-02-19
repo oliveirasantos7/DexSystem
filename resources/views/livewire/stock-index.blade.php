@@ -3,13 +3,22 @@
 
 <div class="flex flex-col items-center  mt-5" >
 
+    {{-- -----------------botão modal-------------------------------- --}}
+
     <div>
         <x-button wire:click="showStockModal" >Novo registro</x-button>
+        {{-- <x-button wire:click="showNoteModal" >Criar nota</x-button> --}}
+
 
     </div>
 
+   
 
 
+    {{-- -----------------fim botão modal-------------------------------- --}}
+
+
+    {{-- -----------------tabela-------------------------------- --}}
     <div class="m-2 p-2 ">
 
         @if($mensagem)
@@ -27,7 +36,7 @@
                             <div class="flex">
                                 <div class="relative w-full">
                                     <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg aria-hidden="true" class="w-5 h-5 flex  text-gray-500 dark:text-gray-400"
+                                        <svg aria-hidden="true" class="w-4 h-4 flex  text-gray-500 dark:text-gray-400"
                                             fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -38,19 +47,51 @@
                                     wire:model.live.debounce.300ms = "search"
                                     type="text"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
-                                        placeholder="    Buscar" required="">
+                                        placeholder="Buscar perfil e desc." required="">
+
+                                        
                                 </div>
+
+
+                                <div class="relative w-full ml-2">
+                                    <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <svg aria-hidden="true" class="w-4 h-4 flex  text-gray-500 dark:text-gray-400"
+                                            fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <input 
+                                    wire:model.live="buscaId"
+                                    type="text"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
+                                        placeholder="Buscar Cod" required="">
+
+                                        
+                                </div>
+
+                               
+                              
+
+                                
 
 
                                
                             </div>
+
+                          
+                         
+
+                            
                             <div class="flex space-x-3">
                                 <div class="flex space-x-3 items-center">
-                                    <label class="w-40 text-sm font-medium text-white">Selecione uma linha</label>
+                                    <label class="w-40 text-sm font-medium text-white"></label>
                                     <select
                                     wire:model.live="buscaLinha"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                        <option value="">Todas as linhas</option>
+                                     
+                                        <option value="">Filtrar linha </option>
                                         <option value="Suprema">Suprema</option>
                                         <option value="Gold">Gold</option>
                                         <option value="Integrada">Integrada</option>
@@ -66,15 +107,16 @@
                                     </select>
                                 </div>  
                             </div>
+                         
 
 
                             <div class="flex space-x-3">
                                 <div class="flex space-x-3 items-center">
-                                    <label class="w-40 text-sm font-medium text-white">Selecione uma cor</label>
+                                    <label class="w-40 text-sm font-medium text-white"></label>
                                     <select
                                     wire:model.live="buscaCor"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                        <option value="">Todas as cores</option>
+                                        <option value="">Filtrar cor</option>
                                         <option value="branco">Branco</option>
                                         <option value="Preto Pintado">Preto Pintado</option>
                                         <option value="Preto Anodizado">Preto Anodizado</option>
@@ -94,11 +136,11 @@
 
                             <div class="flex space-x-3">
                                 <div class="flex space-x-3 items-center">
-                                    <label class="w-40 text-sm font-medium text-white">Selecione a localização</label>
+                                    <label class="w-40 text-sm font-medium text-white"></label>
                                     <select
                                     wire:model.live="buscaLocalizacao"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                        <option value="">Todas</option>
+                                        <option value="">Filtrar localização</option>
                                         <option value="A1">A1</option>
                                         <option value="A2">A2</option>
                                         <option value="A3">A3</option>
@@ -186,7 +228,12 @@
                                             {{ $stock->id }}</th>
                                             <th scope="row"
                                             class="px-4 py-3   font-medium text-gray-900 whitespace-nowrap  dark:text-white">
-                                         <img class="" src="{{Storage::url($stock->imagem) }}" alt="">
+                                         
+                                         <a href="{{Storage::url($stock->imagem) }}">
+
+                                            <img class="" src="{{Storage::url($stock->imagem) }}" alt="">
+
+                                         </a>
                                          
 
                                         
@@ -279,7 +326,11 @@
         </div>
     </div>
 
+    {{-- -----------------fim tabela tabela-------------------------------- --}}
     
+
+
+    {{-- -----------------modal estoque-------------------------------- --}}
 
     <div>
         <x-dialog-modal wire:model="showingStockModal">
@@ -496,7 +547,50 @@
         @endif 
             </x-slot>
         </x-dialog-modal>
+
     </div>
+    {{-- -----------------fim modal-------------------------------- --}}
+  
+
+
+
+    {{-- -----------------modal notas-------------------------------- --}}
+
+    <div>
+        <x-dialog-modal wire:model="showingNoteModal">
+            <x-slot name="title">Criar nota</x-slot>
+            <x-slot name="content">
+
+                <form enctype="multipart/form-data">
+                
+                
+                    <div class="sm:col-span-6 pt-5">
+
+                        <div class="mt-1">
+                            <textarea
+                                name="descri"
+                                id="desc"
+                                wire:model.lazy="descri"
+                                class="shadow-sm focus:ring-indigo-500 appearance-none block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out"
+                                placeholder="Descrição"
+                            ></textarea>
+                        </div>
+                    </div>
+                </form>
+            </x-slot>
+            <x-slot name="footer">
+            <x-button wire:click="storeStock" name="title">Criar nota</x-button>
+
+            </x-slot>
+
+
+        </x-dialog-modal>
+
+
+    </div>
+
+
+
     
     <script>
         // JavaScript para manipular a visibilidade do dropdown
@@ -516,6 +610,8 @@
     </script> 
 
 </div>
+
+
 
 
 

@@ -24,11 +24,7 @@ class Stock extends Model
     public function scopeSearch($query, $value){
         $query->where('perfil', 'like', "%{$value}%")
         ->orWhere('descri','like',"%{$value}%")
-        ->orWhere('id', 'like', "%{$value}%")
-        ->orWhere('created_at', 'like', "%{$value}%")
-        ->orWhere('updated_at', 'like', "%{$value}%");
-
-        
+        ->orWhere('id', '=', $value);  // Alterado para igualdade (=) para pesquisa exata
     }
 
 }
