@@ -43,6 +43,7 @@ class StockIndex extends Component
     public $itens;
     public $mensagem;
     public $tipoMensagem;
+    public $refresh;
     
     
 
@@ -211,6 +212,8 @@ class StockIndex extends Component
 
 
 
+
+
  
 
     public function render()
@@ -237,4 +240,7 @@ class StockIndex extends Component
 
         return view('livewire.stock-index', compact('stocks'));
     }
+
+ 
+
 }

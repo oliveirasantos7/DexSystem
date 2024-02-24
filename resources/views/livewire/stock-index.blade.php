@@ -33,6 +33,10 @@
                     <!-- Start coding here -->
                     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                         <div class="flex items-center justify-between d p-4">
+
+                           
+                          
+                                
                             <div class="flex">
                                 <div class="relative w-full">
                                     <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -79,7 +83,8 @@
 
                                
                             </div>
-
+                            
+                          
                           
                          
 
@@ -167,6 +172,9 @@
 
 
                                     </select>
+
+           
+
                                 </div>  
                             </div>
 
@@ -226,13 +234,17 @@
                                         <th scope="row"
                                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $stock->id }}</th>
+
+
                                             <th scope="row"
-                                            class="px-4 py-3   font-medium text-gray-900 whitespace-nowrap  dark:text-white">
+                                            class="px-4 py-3 h-96 w-96  font-medium text-gray-900 whitespace-nowrap  dark:text-white">
                                          
                                          <a href="{{Storage::url($stock->imagem) }}">
 
-                                            <img class="" src="{{Storage::url($stock->imagem) }}" alt="">
+                                            
 
+                                            <img style="max-width: 80px; max-height: 80px;" class="object-cover" src="{{Storage::url($stock->imagem) }}" alt="">
+                                        
                                          </a>
                                          
 
