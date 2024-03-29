@@ -10,7 +10,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome :estoque="$estoque" :ultimosDados="$ultimosDados"/>
+                <x-dash :estoque="$estoque"
+                 :barrasInteiras="$barrasInteiras"
+                  :l009B="$l009B"
+                   :l013B="$l013B"
+                   :regua="$regua"/>
             </div>
         </div>
     </div>

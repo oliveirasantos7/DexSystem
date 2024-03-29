@@ -19,7 +19,17 @@
                     <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
                         {{ __('Estoque') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
+                        {{ __('Projetos') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
+                        {{ __('Cliente') }}
+                    </x-nav-link>
                 </div>
+
+               
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
