@@ -155,8 +155,8 @@
                                         <option value="B2">B2</option>
                                         <option value="B3">B3</option>
                                         <option value="B4">B4</option>
-                                        <option value="B6">B5</option>
-                                        <option value="B5">B6</option>
+                                        <option value="B5">B5</option>
+                                        <option value="B6">B6</option>
                                         <option value="G1">G1</option>
                                         <option value="G2">G2</option>
                                         <option value="G3">G3</option>
@@ -516,8 +516,8 @@
                         <option value="B2">B2</option>
                         <option value="B3">B3</option>
                         <option value="B4">B4</option>
-                        <option value="B6">B5</option>
-                        <option value="B5">B6</option>
+                        <option value="B5">B5</option>
+                        <option value="B6">B6</option>
                         <option value="G1">G1</option>
                         <option value="G2">G2</option>
                         <option value="G3">G3</option>

@@ -25,7 +25,7 @@
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
-                        {{ __('Cliente') }}
+                        {{ __('Clientes') }}
                     </x-nav-link>
                 </div>
 
