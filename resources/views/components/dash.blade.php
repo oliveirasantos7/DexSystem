@@ -15,7 +15,7 @@
 
     {{-- ----------------estoqye minimo de l009 branca------------- --}}
     @if ($l009B->count() < 3)
-    <div  id="notification" class="bg-red-500 flex justify-between text-slate-800  mb-2 p-1">
+    <div  id="notification1" class="bg-red-500 flex justify-between text-slate-800  mb-2 p-1">
         <div class="flex items-center"> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
@@ -27,7 +27,7 @@
 
              @endif
             </div> 
-        <div class="cursor-pointer" onclick="fecharNotificacao()">
+        <div class="cursor-pointer" onclick="fecharNotificacao1()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
@@ -40,7 +40,7 @@
 
     {{-- ----------------estoqye minimo de l013 branca------------- --}}
     @if ($l013B->count() < 3)
-    <div  id="notification" class="bg-red-500 flex justify-between text-slate-800  mb-2 p-1">
+    <div  id="notification2" class="bg-red-500 flex justify-between text-slate-800  mb-2 p-1">
         <div class="flex items-center"> 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
@@ -53,7 +53,7 @@
 
              @endif
             </div> 
-        <div class="cursor-pointer" onclick="fecharNotificacao()">
+        <div class="cursor-pointer" onclick="fecharNotificacao2()">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
@@ -65,7 +65,7 @@
 
      {{-- ----------------estoqye minimo de l013 branca------------- --}}
      @if ($regua->count() < 3)
-     <div  id="notification" class="bg-red-500 flex justify-between text-slate-800  mb-2 p-1">
+     <div  id="notification3" class="bg-red-500 flex justify-between text-slate-800  mb-2 p-1">
          <div class="flex items-center"> 
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
@@ -78,7 +78,7 @@
  
               @endif
              </div> 
-         <div class="cursor-pointer" onclick="fecharNotificacao()">
+         <div class="cursor-pointer" onclick="fecharNotificacao3()">
          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
            </svg>
@@ -106,7 +106,7 @@
         <!-- Card 1 --> 
         <div class="w-full sm:w-1/2 lg:w-1/4 mb-4 flex " >
             <div class="bg-white p-6 rounded-md shadow-md">
-                <h2 class="text-xl font-semibold mb-4">Total de Produtos em estoque</h2>
+                <h2 class="text-xl font-semibold mb-4">Total de perfis em estoque</h2>
                 <h2 class="text-xl font-semibold  text-green-500 mb-4">{{ $estoque->count() }}</h2>
             </div>
 
@@ -131,145 +131,14 @@
 
                        <!-- Seção de Métricas -->
                        <section class="mt-6 flex flex-wrap justify-between">
-                        <!-- Card 4 - Produtos Adicionados Recentemente -->
-                        <div class="w-full sm:w-1/2 lg:w-1/4 mt-5" >
-                          <div class="bg-white p-6 rounded-md shadow-md">
-                              <h2 class="text-xl font-semibold mb-4">Produtos Adicionados Recentemente</h2>
 
-                            <table class="w-full text-sm text-left  ">
-                             
-                                <thead style="background-color: rgb(30 41 59)"  class="text-xs  uppercase text-white rounded-md bg-slate-800">
-                                    <tr>
-                            
-                                       
-                                        
-                                        <th scope="col" class="px-4 py-3" >Cod</th>
-                                        <th scope="col" class="px-4 py-3">Perfil</th>
-                                        <th scope="col" class="px-4 py-3">Desc</th>
-                                        <th scope="col" class="px-4 py-3">Cor</th>
-                                        <th scope="col" class="px-4 py-3">Tam</th>
-                                        <th scope="col" class="px-4 py-3">Qtd</th>
-                                        <th scope="col" class="px-4 py-3">Linha</th>
-                                        <th scope="col" class="px-4 py-3">Local</th>
-                                        <th scope="col" class="px-4 py-3">Data de reg.</th>
-                                        
-                                    </tr>
-                                </thead
-                                <tbody>
-                                    
-
-                                    <tr class="border-b dark:border-gray-700">
-                                        
-                                   
-                                        <th scope="row"
-                                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                            34</th>
-
-
-                                        <td class="px-4 py-3 text-green-500">Su-332</td>
-
-                                        <td class="px-4 py-3 ">
-                                            montante mao amigo</td>
-
-                                        <td class="px-4 py-3  text-green-500">
-                                                Branco</td>
-
-                                        <td class="px-4 py-3 text-green-500">345</td>
-
-                                        <td class="px-4 py-3 ">3</td>
-
-                                        <td class="px-4 py-3 text-green-500">Suprema</td>
-
-                                        <td class="px-4 py-3">G5</td>
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3 text-green-500">23/07/2023</td>
-
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
-                                        <td class="px-4 py-3"></td>
-
-                                    
-                                    </tr>
-
-                                    <tr class="border-b dark:border-gray-700">
-                                        
-                                   
-                                        <th scope="row"
-                                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                            34</th>
-
-
-                                        <td class="px-4 py-3 text-green-500">Su-332</td>
-
-                                        <td class="px-4 py-3 ">
-                                            montante mao amigo</td>
-
-                                        <td class="px-4 py-3  text-green-500">
-                                                Branco</td>
-
-                                        <td class="px-4 py-3 text-green-500">345</td>
-
-                                        <td class="px-4 py-3 ">3</td>
-
-                                        <td class="px-4 py-3 text-green-500">Suprema</td>
-
-                                        <td class="px-4 py-3">G5</td>
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3 text-green-500">23/07/2023</td>
-
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
-                                        <td class="px-4 py-3"></td>
-
-                                    
-                                    </tr>
-
-                                    <tr class="border-b dark:border-gray-700">
-                                        
-                                   
-                                        <th scope="row"
-                                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                            34</th>
-
-
-                                        <td class="px-4 py-3 text-green-500">Su-332</td>
-
-                                        <td class="px-4 py-3 ">
-                                            montante mao amigo</td>
-
-                                        <td class="px-4 py-3  text-green-500">
-                                                Branco</td>
-
-                                        <td class="px-4 py-3 text-green-500">345</td>
-
-                                        <td class="px-4 py-3 ">3</td>
-
-                                        <td class="px-4 py-3 text-green-500">Suprema</td>
-
-                                        <td class="px-4 py-3">G5</td>
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3 text-green-500">23/07/2023</td>
-
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
-                                        <td class="px-4 py-3"></td>
-
-                                    
-                                    </tr>
-                                    
-                                </tbody>
-                             </table>
-                          </div>
-                      </div>
+                      
                 
                 
                        <!-- Card 4 - Produtos Adicionados Recentemente -->
                        <div class="w-full sm:w-1/2 lg:w-1/4 mt-5" >
                         <div class="bg-white p-6 rounded-md shadow-md">
-                            <h2 class="text-xl font-semibold mb-4">Produtos Removidos Recentemente</h2>
+                            <h2 class="text-xl font-semibold mb-4">Perfis adcionados Recentemente</h2>
                             <table class="w-full text-sm text-left  ">
                              
                                 <thead style="background-color: rgb(30 41 59)"  class="text-xs  uppercase text-white rounded-md bg-slate-800">
@@ -289,6 +158,9 @@
                                         
                                     </tr>
                                 </thead
+
+                                @foreach ($ultimasAdd as $ulAdd)
+                                    
                                 <tbody>
                                     
 
@@ -297,61 +169,32 @@
                                    
                                         <th scope="row"
                                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                            34</th>
+                                            {{ $ulAdd->id }}</th>
 
 
-                                        <td class="px-4 py-3 text-green-500">Su-332</td>
+                                        <td class="px-4 py-3 text-green-500">{{ $ulAdd->perfil }}</td>
 
                                         <td class="px-4 py-3 ">
-                                            montante mao amigo</td>
+                                            {{ $ulAdd->descri }}
+                                        </td>
 
                                         <td class="px-4 py-3  text-green-500">
-                                                Branco</td>
+                                            {{ $ulAdd->cor }}
+                                        </td>
 
-                                        <td class="px-4 py-3 text-green-500">345</td>
+                                        <td class="px-4 py-3 text-green-500">
+                                            {{ $ulAdd->tamanho }}
+                                        </td>
 
-                                        <td class="px-4 py-3 ">3</td>
+                                        <td class="px-4 py-3 ">{{ $ulAdd->qtd }}</td>
 
-                                        <td class="px-4 py-3 text-green-500">Suprema</td>
+                                        <td class="px-4 py-3 text-green-500">{{ $ulAdd->linha }}</td>
 
-                                        <td class="px-4 py-3">G5</td>
+                                        <td class="px-4 py-3">{{ $ulAdd->loca}}</td>
 
-                                        {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3 text-green-500">23/07/2023</td>
-
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
-                                        <td class="px-4 py-3"></td>
-
-                                    
-                                    </tr>
-
-                                    <tr class="border-b dark:border-gray-700">
+                                        <td class="px-4 py-3 text-green-500">{{ \Carbon\Carbon::parse($ulAdd->created_at)->format('d/m/Y') }}</td>
                                         
-                                   
-                                        <th scope="row"
-                                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                            34</th>
-
-
-                                        <td class="px-4 py-3 text-green-500">Su-332</td>
-
-                                        <td class="px-4 py-3 ">
-                                            montante mao amigo</td>
-
-                                        <td class="px-4 py-3  text-green-500">
-                                                Branco</td>
-
-                                        <td class="px-4 py-3 text-green-500">345</td>
-
-                                        <td class="px-4 py-3 ">3</td>
-
-                                        <td class="px-4 py-3 text-green-500">Suprema</td>
-
-                                        <td class="px-4 py-3">G5</td>
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3 text-green-500">23/07/2023</td>
+                                        {{-- <td class="px-4 py-3 text-green-500">23/07/2023</td> --}}
 
 
                                         {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
@@ -360,49 +203,29 @@
                                     
                                     </tr>
 
-                                    <tr class="border-b dark:border-gray-700">
-                                        
-                                   
-                                        <th scope="row"
-                                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
-                                            34</th>
+                                  
 
-
-                                        <td class="px-4 py-3 text-green-500">Su-332</td>
-
-                                        <td class="px-4 py-3 ">
-                                            montante mao amigo</td>
-
-                                        <td class="px-4 py-3  text-green-500">
-                                                Branco</td>
-
-                                        <td class="px-4 py-3 text-green-500">345</td>
-
-                                        <td class="px-4 py-3 ">3</td>
-
-                                        <td class="px-4 py-3 text-green-500">Suprema</td>
-
-                                        <td class="px-4 py-3">G5</td>
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->created_at}}</td> --}}
-                                        <td class="px-4 py-3 text-green-500">23/07/2023</td>
-
-
-                                        {{-- <td class="px-4 py-3">{{ $stock->updated_at}}</td> --}}
-                                        <td class="px-4 py-3"></td>
-
-                                    
-                                    </tr>
-                                    
+                                  
                                 </tbody>
+
+                                @endforeach
+
                              </table>
                         </div>
                     </div>
                 </section>
 
                 <script>
-                    function fecharNotificacao() {
-                        var notification = document.getElementById('notification');
+                    function fecharNotificacao1() {
+                        var notification = document.getElementById('notification1');
+                        notification.style.display = 'none';
+                    }
+                    function fecharNotificacao2() {
+                        var notification = document.getElementById('notification2');
+                        notification.style.display = 'none';
+                    }
+                    function fecharNotificacao3() {
+                        var notification = document.getElementById('notification3');
                         notification.style.display = 'none';
                     }
                 </script>

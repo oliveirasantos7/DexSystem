@@ -33,16 +33,11 @@ class Dashboard extends Controller
          ->where('tamanho', '6,00');
         
       
+        $ultimasAdd = Stock::orderBy('created_at', 'desc')->take(5)->get();
+
         
-
-      
-
-
-
-
-    
         return view('dashboard',
-         compact('estoque', 'barrasInteiras', 'l009B', 'l013B', 'regua'));
+         compact('estoque', 'barrasInteiras', 'l009B', 'l013B', 'regua', 'ultimasAdd'));
         // return redirect()->route('login');
     }
 

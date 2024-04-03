@@ -14,7 +14,9 @@
                  :barrasInteiras="$barrasInteiras"
                   :l009B="$l009B"
                    :l013B="$l013B"
-                   :regua="$regua"/>
+                   :regua="$regua"
+                   :ultimasAdd="$ultimasAdd"
+                   />
             </div>
         </div>
     </div>
