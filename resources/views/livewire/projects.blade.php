@@ -52,7 +52,7 @@
 
     <div style="background-color: rgb(30 41 59);" class="max-w-md w-full rounded-lg overflow-hidden shadow-lg mt-5 ">
         <div class="px-6 py-4 bg-gray-800 dark:bg-gray-700">
-            <h2 class="text-xl font-semibold text-white">Dante lorenzo gomes de oliveira - Código: 123 - Referência: 2343</h2>
+            <h2 class="text-xl font-semibold text-white">Erick Adriel gomes de oliveira - Código: 123 - Referência: 2343</h2>
         </div>
 
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
