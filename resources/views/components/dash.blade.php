@@ -116,6 +116,19 @@
 
             </div>
 
+            <div class="bg-white p-6 rounded-md shadow-md ml-4">
+                <h2 class="text-xl font-semibold mb-4">Clientes cadastrados</h2>
+                <h2 class="text-xl text-green-500 font-semibold mb-4">{{ $barrasInteiras->count() }}</h2>
+
+            </div>
+
+            <div class="bg-white p-6 rounded-md shadow-md ml-4">
+                <h2 class="text-xl font-semibold mb-4">Projetos criados</h2>
+                <h2 class="text-xl text-green-500 font-semibold mb-4">{{ $barrasInteiras->count() }}</h2>
+
+            </div>
+
+
            
         </div>
   

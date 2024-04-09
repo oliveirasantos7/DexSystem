@@ -41,15 +41,7 @@ class Dashboard extends Controller
         // return redirect()->route('login');
     }
 
-    public function deleteMultiples(Request $request){
-        $idsDeexclusão = $request->input('checkbox');
-
-        // Stock::destroy($idsDeexclusão);
-        // return redirect()->back()->with('success', 'Registros deletados com sucesso');
-
-        dd($idsDeexclusão);
-
-
-      
-    }
+   public function client(){
+    return view('clientes');
+   }
 }

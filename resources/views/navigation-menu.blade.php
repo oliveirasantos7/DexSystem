@@ -20,11 +20,11 @@
                         {{ __('Estoque') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
+                    <x-nav-link href="{{ route('projetos.index') }}" :active="request()->routeIs('projetos.index')">
                         {{ __('Projetos') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
+                    <x-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('estoque.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
                 </div>
