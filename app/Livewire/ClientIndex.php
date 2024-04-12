@@ -7,7 +7,7 @@ use App\Models\Client;
 use Livewire\Component;
 
 
-class Cliente extends Component
+class ClientIndex extends Component
 {
 
         public $clients;

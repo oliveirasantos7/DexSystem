@@ -41,6 +41,8 @@ class Dashboard extends Controller
         // return redirect()->route('login');
     }
 
+   
+
    public function client(){
     return view('clientes');
    }

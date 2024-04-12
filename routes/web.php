@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard;
 use App\Livewire\Client;
 use App\Livewire\Cliente;
+use App\Livewire\ClientIndex;
+use App\Livewire\NewJanelas;
 use App\Livewire\NewProject;
 use App\Livewire\ProjectDetail;
 use App\Livewire\Projects;
+use App\Livewire\ProjectsIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +40,11 @@ Route::middleware([
 
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
     Route::get('/estoque', StockIndex::class)->name('estoque.index');
-    Route::get('/projetos', Projects::class)->name('projetos.index');
-    Route::get('/cliente', Cliente::class)->name('client.index');
+    Route::get('/projetos', ProjectsIndex::class)->name('projetos.index');
+    Route::get('/cliente', ClientIndex::class)->name('client.index');
     Route::get('/projeto/detalhes', ProjectDetail::class)->name('projetos.details');
     Route::get('/projeto/novo', NewProject::class)->name('projetos.novo');
+    Route::get('/projeto/novo/janelas', NewJanelas::class)->name('projetos.novo.janelas');
     Route::post('/dashboard', [Dashboard::class, 'deleteMultiples'])->name('delete.multiples');
 
 

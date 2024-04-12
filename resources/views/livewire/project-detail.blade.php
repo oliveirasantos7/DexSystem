@@ -60,16 +60,19 @@
                     <img style="max-width: 80px; max-height: 80px;" class="object-cover" src="https://via.placeholder.com/150" alt="">
                     </div>
               
-            <h2 style="margin-left: 40px" class="text-xl font-semibold text-white ">Janela suprema 2 folhas vidro- Cod: 123 - Ref: 2343</h2>
-            <h2 style="margin-left: 40px" class="text-xl font-semibold text-white ">Erick adriel - Cod: 123</h2>
-
-
+                     <h2 style="margin-left: 40px" class="text-xl font-semibold text-white ">Janela suprema 2 folhas vidro- Cod: 123 - Ref: 2343</h2>
+                     <h2 style="margin-left: 40px" class="text-xl font-semibold text-white ">Erick adriel - Cod: 123</h2>
             </div>
             
 
-            <div class="flex justify-between">
-         <div class="box 1">
+          <div class="flex justify-between">
+              <div class="box 1">
 
+                <div class="flex items-center">
+                    <h2 class="text-xl font-semibold text-white">Linha: </h2>
+                    <span class="text-md font-semibold text-white ml-2 mt-1">  Suprema</span>
+    
+                </div>
            
             <div class="flex items-center">
                 <h2 class="text-xl font-semibold text-white">Cor esquadria: </h2>
@@ -139,7 +142,7 @@
             </div>
 
         </div>
-    </div>
+      </div>
 
 
             

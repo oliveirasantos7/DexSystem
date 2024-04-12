@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Projects extends Component
+class ProjectsIndex extends Component
 {
 
     public $showingStockModal = false;
