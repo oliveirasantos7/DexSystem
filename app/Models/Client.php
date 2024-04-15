@@ -24,4 +24,11 @@ class Client extends Model
         'adjunct',
          'obs',
    ];
+
+
+    public function projetos()
+    {
+        return $this->hasMany(Project::class);
+    }
+
 }
