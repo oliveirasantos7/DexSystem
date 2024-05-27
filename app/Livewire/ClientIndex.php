@@ -29,11 +29,15 @@ class ClientIndex extends Component
         public $isEditMode = false;
         public $isDeleteMode = false;
 
+        public $clienteId;
+
     public function showStockModal(){
 
         $this->reset();
         $this->showingClientModal = true;
     }
+
+    
     public function storeClient(){
 
         $this->validate([
@@ -115,9 +119,10 @@ class ClientIndex extends Component
     }
 
 
-    public function newProject(){
+    public function newProject($clienteId){
        
-        return redirect()->route('projetos.novo');
+        $this->clienteId = $clienteId;
+        return redirect()->route('projetos.novo', ['cliente_id' => $clienteId]);
         
         // $this->redirect(route('projetos.novo'));
     }

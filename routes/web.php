@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard;
 use App\Livewire\Client;
 use App\Livewire\Cliente;
 use App\Livewire\ClientIndex;
+use App\Livewire\EditProject;
 use App\Livewire\NewJanelas;
 use App\Livewire\NewProject;
 use App\Livewire\ProjectDetail;
@@ -42,8 +43,9 @@ Route::middleware([
     Route::get('/estoque', StockIndex::class)->name('estoque.index');
     Route::get('/projetos', ProjectsIndex::class)->name('projetos.index');
     Route::get('/cliente', ClientIndex::class)->name('client.index');
-    Route::get('/projeto/detalhes', ProjectDetail::class)->name('projetos.details');
-    Route::get('/projeto/novo', NewProject::class)->name('projetos.novo');
+    Route::get('/projeto/detalhes/{id}', ProjectDetail::class)->name('projetos.details');
+    Route::get('/projeto/novo/{cliente_id}', NewProject::class)->name('projetos.novo');
+    Route::get('/projeto/edit/{project_id}', EditProject::class)->name('edit.novo');
     Route::get('/projeto/novo/janelas', NewJanelas::class)->name('projetos.novo.janelas');
     Route::post('/dashboard', [Dashboard::class, 'deleteMultiples'])->name('delete.multiples');
 
