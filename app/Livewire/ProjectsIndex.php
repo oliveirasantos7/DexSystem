@@ -298,7 +298,7 @@ class ProjectsIndex extends Component
         foreach ($this->cuttingDesignData as $data) {
             $cuttingDesign = CuttingDesign::findOrFail($data['id']);
             $newSize = $this->calculateNewSize($data['profile']);
-            $newQtdProfile = $this->calculateQtdProfile($this->qtd);
+            $newQtdProfile = $this->calculateQtdProfile($this->qtd, $data['profile']);
             $newQtdMt = $this->calculateQtdMt($this->width, $this->height, $this->qtd);
             $newQtdBars = $this->calculateQtdBars($newQtdMt);
             $newWeightMt = $this->calculateWeightMt($newQtdMt);
@@ -372,9 +372,28 @@ class ProjectsIndex extends Component
 
    
 
-    protected function calculateQtdProfile($qtd)
+    protected function calculateQtdProfile($qtd, $profile)
     {
-        return $qtd * 2; // Exemplo: 2 perfis por item
+        // return $qtd * 2; // Exemplo: 2 perfis por item
+        switch ($this->item) {
+            case 'Janela suprema 2 folhas vidro':
+        switch ($profile) {
+            case 'Su-001':
+            case 'Su-002':
+                return $qtd;
+            case 'Su-007':
+                return $qtd * 2;
+            case 'Su-008':
+                return $qtd * 2;
+            case 'Su-053':
+                return $qtd * 4;
+            // Adicione outros casos específicos conforme necessário
+            default:
+                return 2;
+        }
+        default:
+        return 2; // Tamanho padrão se o item não corresponder
+        }
     }
 
     protected function calculateQtdMt($width, $height, $qtd)
