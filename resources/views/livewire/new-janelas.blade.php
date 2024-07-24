@@ -118,7 +118,7 @@
 
 
                             <div class="mt-1">
-                                <select name="color" wire:model.lazy="color" id="cor" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
+                                <select name="color_esquadrias" wire:model.lazy="color_esquadrias" id="cor" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
                                     <option value="" hidden>Cor do aluminio</option>
                                     <option value="branco">Branco</option>
                                     <option value="Preto Pintado">Preto Pintado</option>
@@ -135,9 +135,9 @@
                             </div>
 
                             <div class="mt-1">
-                                <select name="accessoryColor"
-                                    wire:model.lazy="accessoryColor"
-                                    id="accessoryColor" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
+                                <select name="color_acessorio"
+                                    wire:model.lazy="color_acessorio"
+                                    id="color_acessorio" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
                                         <option value="" hidden>Cor acessorios</option>
                                         <option value="Branco">Branco</option>
                                         <option value="Preto">Preto</option>
@@ -147,20 +147,20 @@
 
 
                             <div class="mt-1">
-                                <select name="glass"
-                                    wire:model.lazy="glass"
-                                    id="glass" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
+                                <select name="type_glass"
+                                    wire:model.lazy="type_glass"
+                                    id="type_glass" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
                                     <option value="" hidden>Vidro</option>
-                                    <option value="">Incolor 4mm comum</option>
-                                    <option value="">Incolor 6mm comum</option>
-                                    <option value="">Incolor 6 temperado</option>
-                                    <option value="">Incolor 6mm laminado</option>
+                                    <option >Incolor 4mm comum</option>
+                                    <option >Incolor 6mm comum</option>
+                                    <option >Incolor 6 temperado</option>
+                                    <option >Incolor 6mm laminado</option>
 
-                                    <option value="">Verde 4mm comum</option>
-                                    <option value="">Verde 6mm comum</option>
-                                    <option value="">Verde 6 temperado</option>
-                                    <option value="">Verde 6mm laminado</option> 
-                                    <option value="">Outros</option>
+                                    <option>Verde 4mm comum</option>
+                                    <option>Verde 6mm comum</option>
+                                    <option >Verde 6 temperado</option>
+                                    <option >Verde 6mm laminado</option> 
+                                    <option>Outros</option>
 
 
 
@@ -169,13 +169,27 @@
 
 
                             <div class="mt-1">
-                                <select name="contamarco"
-                                    wire:model.lazy="contamarco"
+                                <select name="contramarco"
+                                    wire:model.lazy="contramarco"
                                     id="contamarco" class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out">
                                     <option value="" hidden>Contramarco</option>
-                                    <option value="Sim">Sim</option>
-                                    <option value="Não">Não</option>
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
                                 </select>
+                            </div>
+
+                            <div class="sm:col-span-6 flex justify-between">
+
+                                <div class="mt-1  ">
+                                    <input
+                                        style="width: 400px"
+                                        type="numbre"
+                                        wire:model.lazy="folga_inst"
+                                        name="ref"
+                                        id="ref"
+                                        class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out "
+                                        placeholder="Folga para instalação (MM)">
+                                </div>
                             </div>
 
                             <div class="sm:col-span-6 flex justify-between">
@@ -199,11 +213,26 @@
                                     <input
                                         style="width: 400px"
                                         type="text"
-                                        wire:model.lazy="location"
-                                        name="location"
-                                        id="location"
+                                        wire:model.lazy="local"
+                                        name="local"
+                                        id="local"
                                         class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out "
                                         placeholder="Localização">
+                                </div>
+                            </div>
+
+
+                            <div class="sm:col-span-6 flex justify-between">
+
+                                <div class="mt-1">
+                                    <input
+                                        style="width: 400px"
+                                        type="text"
+                                        wire:model.lazy="cliente_id"
+                                        name="cliente_id"
+                                        id="cliente_id"
+                                        class="block w-full py-2 px-3 border border-gray-300 rounded-md leading-5 text-gray-700 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out "
+                                        placeholder="cliente">
                                 </div>
                             </div>
 
@@ -223,7 +252,7 @@
                 </x-slot>
 
                 <x-slot name="footer">
-                        <x-button wire:click="storeItem" name="title">Novo item</x-button>
+                        <x-button wire:click="storeProject" name="title">Novo item</x-button>
                 </x-slot>
 
             </x-dialog-modal>

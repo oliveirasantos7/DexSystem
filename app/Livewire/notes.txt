@@ -63,3 +63,523 @@
                 
             
             </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <?php
+
+namespace App\Livewire;
+
+use Illuminate\Support\Facades\Route;
+
+use App\Models\Client;
+use App\Models\CuttingDesign;
+use App\Models\Project;
+use App\Models\Tipology;
+use Livewire\Component;
+
+
+class NewProject extends Component
+{
+
+    public $showingModal = false;
+    public $isjanelaMode;
+    public $modelo;
+    public $model1;
+    public $model2;
+    public $model3;
+
+    public $id;
+    public $item;
+    public $width;
+    public $height;
+    public $qtd;
+    public $line;
+    public $ref;
+    public $image;
+    public $local;
+    public $folga_inst;
+    public $contramarco;
+    public $selected;
+    public $color_esquadrias;
+    public $color_acessorio;
+    public $type_glass;
+    public $obs;
+
+    
+    public $profile;
+    public $descri_profile;
+    public $qtd_profile;
+    public $size;
+    public $pos;
+    public $cut;
+    public $qtd_mt;
+    public $qtd_bars;
+    public $weight_mt;
+    public $weight_bars;
+    public $project_id;
+
+    public $modeloSelect;
+    public $cliente_id;
+
+
+    public function mount($cliente_id)
+    {
+         $this->cliente_id = $cliente_id;
+        // dd($this->cliente_id);
+
+    }
+
+
+
+
+    public function showModal($modelo, $cliente_id, $line){ //$modelo
+        $this->reset();
+        $this->showingModal = true;
+        $this->cliente_id = $cliente_id;
+        $this->line = $line;
+
+        // dd($this->cliente_id);
+    //     if ($modelo === 'Janela suprema 2 folhas vidro') {
+    //         $this->model1 = true;
+    //         } elseif ($modelo === 'modelo2') {
+    //         $this->model2 = true;
+    //         } elseif ($modelo === 'modelo3') {
+    //         $this->model3 = true;
+    //         }
+    //        $this->modeloSelect = $modelo;
+    //   }
+
+    switch ($modelo) {
+        case 'Janela suprema 2 folhas vidro':
+            $this->model1 = true;
+            break;
+        case 'Janela suprema 3 folhas vidro':
+            $this->model2 = true;
+            break;
+        case 'Janelas suprema veneziana vidro e tela':
+            $this->model3 = true;
+            break;
+        // Adicione outros casos conforme necessário
+        default:
+            // Tratamento para modelos desconhecidos
+    }
+    
+    $this->modeloSelect = $modelo;
+
+}
+
+// responsavel por criar um novo projeto
+//seleciona qual tipologia foi selecionada
+      public function storeProject() {
+        // Realizar operações específicas de acordo com o modelo selecionado
+        switch ($this->modeloSelect) {
+            case 'Janela suprema 2 folhas vidro':
+                $this->storeSuprema2folhas();
+                break;
+            case 'Janela suprema 3 folhas vidro':
+                $this->storeSuprema2folhas();
+                break;
+            case 'modelo3':
+                $this->storeModel3();
+                break;
+            default:
+                // Se nenhum modelo específico for encontrado, você pode lidar com isso aqui
+                break;
+        }
+    }
+
+
+// //realiza a criação de um projeto de janela suprema 2 folhas vidro
+//  private function storeSuprema2folhas() {
+
+    
+//     // Realizar operações específicas para o modelo "Suprema 2 folhas vidr"
+//     $this->image = asset('img/imagesEsquadrias/janelas.jpg');
+
+    
+//     if ($this->contramarco) {
+//         $sizeWidthSu001 = ($this->width - 32) - 26;
+//         $sizeSu007 = $this->height - 32;
+
+//     }else{
+//         $sizeWidthSu001 = $this->width -26;
+//         $sizeSu007 = $this->height;
+
+//     }
+
+//     // $sizeWidthSu001 = $this->width - 26;
+//     $weight_su001mm = 0.000762;
+//     $weight_su002mm = 0.000707;
+//     $weight_su007mm = 0.000382;
+
+//     $bar = 6000;
+
+//     $weight_su001mmBar = $weight_su001mm * $bar;
+//     $weight_su002mmBar = $weight_su002mm * $bar;
+//     $weight_su007mmBar = $weight_su007mm * $bar;
+
+    
+//     $qtd_barsSu001 = $sizeWidthSu001 / $bar;
+//     $qtd_barsSu002 = $sizeWidthSu001 / $bar;
+//     $qtd_barsSu007 = $sizeSu007 / $bar;
+
+
+//     $qtd_mtSu001 = (($sizeWidthSu001 * $this->qtd) / 1000).' '.'MT';
+//     $qtd_mtSu002 = (($sizeWidthSu001 * $this->qtd) / 1000).' '.'MT';
+//     $qtd_mtSu007 = (($sizeSu007 * ($this->qtd * 2)) / 1000).' '.'MT';
+
+//     //peso real
+//     $weight_mtSu001 = $sizeWidthSu001 * $weight_su001mm;
+//     $weight_mtSu002 = $sizeWidthSu001 * $weight_su002mm;
+//     $weight_mtSu007 = ($sizeSu007 * $weight_su007mm) * ($this->qtd * 2);
+
+
+//     $weight_barsSu001 = $this->calculateWeightBarsSu001($qtd_barsSu001, $weight_su001mmBar);
+//     $weight_barsSu002 = $this->calculateWeightBarsSu002($qtd_barsSu002, $weight_su002mmBar);
+//     $weight_barsSu007 = $this->calculateWeightBarsSu007($qtd_barsSu007, $weight_su007mmBar);
+
+
+    
+//     $project = Project::create([
+        
+//         'item' => $this->modeloSelect,
+//         'width' => $this->width,
+//         'height' => $this->height,
+//         'qtd' => $this->qtd,
+//         'line' => $this->line,
+//         'ref' => $this->ref,
+//         'image' => $this->image,
+//         'cliente_id' => $this->cliente_id,
+//         'local' => $this->local,
+//         'folga_inst' => $this->folga_inst,
+//         'contramarco' => $this->contramarco,
+//         'color_esquadrias' => $this->color_esquadrias,
+//         'color_acessorio' => $this->color_acessorio,
+//         'type_glass' => $this->type_glass,
+//         'obs' => $this->obs
+//     ]);
+
+//     CuttingDesign::create([
+//      'profile' => 'Su-001',
+//      'image' =>  asset('img/imagesPerfis/bgdex.png'),
+//      'descri_profile' => 'Soleira superior 2 planos',
+//      'qtd_profile'=> $this->qtd,
+//      'size'=> $sizeWidthSu001,
+//      'pos'=>'L',
+//      'cut'=>'90/90',
+//      'qtd_mt'=> $qtd_mtSu001,
+//      'qtd_bars'=> $qtd_barsSu001,
+//      'weight_mt' => $weight_mtSu001,
+//      'weight_bars' => $weight_barsSu001 ,
+//      'project_id'=> $project->id,
+//      'client_id'=> $this->cliente_id
+//     ]);
+
+//     CuttingDesign::create([
+//         'profile' => 'Su-002',
+//         'image' =>  asset('img/imagesPerfis/bgdex.png'),
+//         'descri_profile' => 'Soleira inferior 2 planos',
+//         'qtd_profile'=> $this->qtd,
+//         'size'=> $sizeWidthSu001,
+//         'pos'=>'L',
+//         'cut'=>'90/90',
+//         'qtd_mt'=> $qtd_mtSu002,
+//         'qtd_bars'=> $qtd_barsSu002,
+//         'weight_mt' => $weight_mtSu002,
+//         'weight_bars' => $weight_barsSu002 ,
+//         'project_id'=> $project->id,
+//         'client_id'=> $this->cliente_id
+//        ]);
+
+//        CuttingDesign::create([
+//         'profile' => 'Su-007',
+//         'image' =>  asset('img/imagesPerfis/bgdex.png'),
+//         'descri_profile' => 'Soleira Lateral 2 planos',
+//         'qtd_profile'=> $this->qtd * 2,
+//         'size'=> $sizeSu007,
+//         'pos'=>'H',
+//         'cut'=>'90/90',
+//         'qtd_mt'=> $qtd_mtSu007,
+//         'qtd_bars'=> $qtd_barsSu007,
+//         'weight_mt' => $weight_mtSu007,
+//         'weight_bars' => $weight_barsSu007 ,
+//         'project_id'=> $project->id,
+//         'client_id'=> $this->cliente_id
+//        ]);
+
+
+//     $this->reset();
+// }
+
+    // Realizar operações específicas para o modelo "Suprema 2 folhas vidro"
+
+private function storeSuprema2folhas() {
+
+    // imagem da tipologia
+    $this->image = asset('img/imagesEsquadrias/janelas.jpg');
+
+    //tamanhos do perfil, considerando se vai ou não contramarco
+    $sizeWidthSu001 = $this->contramarco ? ($this->width - 32) - 26 : $this->width - 26;
+    $sizeSu007 = $this->contramarco ? $this->height - 32 : $this->height;
+
+    //peso dos perfis por milimetros
+    $weight_su001mm = 0.000762;
+    $weight_su002mm = 0.000707;
+    $weight_su007mm = 0.000382;
+
+    //tamanho de uma barra em milimetrero
+    $bar = 6000;
+
+    //peso dos perfis por barra
+    $weight_su001mmBar = $weight_su001mm * $bar;
+    $weight_su002mmBar = $weight_su002mm * $bar;
+    $weight_su007mmBar = $weight_su007mm * $bar;
+
+    //quantidade de barras 
+    $qtd_barsSu001 = ceil($sizeWidthSu001 / $bar);
+    $qtd_barsSu002 = $qtd_barsSu001; // Mesmo que Su-001
+    $qtd_barsSu007 = ceil($sizeSu007 / $bar);
+
+    //quantidade em metros
+    $qtd_mtSu001 = (($sizeWidthSu001 * $this->qtd) / 1000) . ' MT';
+    $qtd_mtSu002 = $qtd_mtSu001; // Mesmo que Su-001
+    $qtd_mtSu007 = (($sizeSu007 * ($this->qtd * 2)) / 1000) . ' MT';
+
+    //peso da quantidade em metros
+    $weight_mtSu001 = $sizeWidthSu001 * $weight_su001mm;
+    $weight_mtSu002 = $sizeWidthSu001 * $weight_su002mm;
+    $weight_mtSu007 = ($sizeSu007 * $weight_su007mm) * ($this->qtd * 2);
+
+    //peso de quantidade de barras
+    $weight_barsSu001 = $this->calculateWeightBars($qtd_barsSu001, $weight_su001mmBar);
+    $weight_barsSu002 = $this->calculateWeightBars($qtd_barsSu002, $weight_su002mm);
+    $weight_barsSu007 = $this->calculateWeightBars($qtd_barsSu007, $weight_su007mmBar);
+
+   
+    $project = Project::create([
+        
+        'item' => $this->modeloSelect,
+        'width' => $this->width,
+        'height' => $this->height,
+        'qtd' => $this->qtd,
+        'line' => $this->line,
+        'ref' => $this->ref,
+        'image' => $this->image,
+        'cliente_id' => $this->cliente_id,
+        'local' => $this->local,
+        'folga_inst' => $this->folga_inst,
+        'contramarco' => $this->contramarco,
+        'color_esquadrias' => $this->color_esquadrias,
+        'color_acessorio' => $this->color_acessorio,
+        'type_glass' => $this->type_glass,
+        'obs' => $this->obs
+    ]);
+
+    $this->createCuttingDesign('Su-001',
+    asset('img/imagesPerfis/SU-001.jpg'),
+    'Soleira superior 2 planos',
+    $this->qtd,
+    $sizeWidthSu001,
+    'L',
+    '90/90',
+    $qtd_mtSu001,
+    $qtd_barsSu001,
+    $weight_mtSu001,
+    $weight_barsSu001,
+    $project->id);
+
+    $this->createCuttingDesign('Su-002',
+    asset('img/imagesPerfis/su-002.png'),
+    'Soleira inferior 2 planos',
+    $this->qtd,
+    $sizeWidthSu001,
+    'L',
+    '90/90',
+    $qtd_mtSu002,
+    $qtd_barsSu002,
+    $weight_mtSu002,
+    $weight_barsSu002,
+    $project->id);
+
+    $this->createCuttingDesign('Su-007',
+    asset('img/imagesPerfis/su-007.png'),
+    'Soleira lateral 2 planos',
+    $this->qtd * 2,
+    $sizeSu007,
+    'H',
+    '90/90',
+    $qtd_mtSu007,
+    $qtd_barsSu007,
+    $weight_mtSu007,
+    $weight_barsSu007,
+    $project->id);
+
+    $this->reset();
+}
+
+private function calculateWeightBars($qtd_bars, $weight_mmBar) {
+    if ($qtd_bars <= 1) {
+        return $weight_mmBar;
+    } elseif ($qtd_bars == 2) {
+        return $weight_mmBar * 2;
+    } elseif ($qtd_bars == 3) {
+        return $weight_mmBar * 3;
+    } else {
+        return 'Peso Proporcional';
+    }
+}
+
+private function createCuttingDesign($profile, $image, $descri,$qtdProfile, $size,$pos,$cut, $qtd_mt, $qtd_bars, $weight_mt, $weight_bars, $projectId) {
+    CuttingDesign::create([
+        'profile' => $profile,
+        'image' => $image,
+        'descri_profile' => $descri,
+        'qtd_profile' => $qtdProfile,
+        'size' => $size,
+        'pos' => $pos,
+        'cut' => $cut,
+        'qtd_mt' => $qtd_mt,
+        'qtd_bars' => $qtd_bars,
+        'weight_mt' => $weight_mt,
+        'weight_bars' => $weight_bars,
+        'project_id' => $projectId,
+        'client_id' => $this->cliente_id
+    ]);
+}
+
+
+// //calcula o peso por barras considerando 1 barra inteira
+// private function calculateWeightBarsSu001($qtd_barsSu001, $weight_su001mmBar) {
+//     switch (true) {
+//         case ($qtd_barsSu001 <= 1):
+//             return $weight_su001mmBar;
+//             break;
+//             case ($qtd_barsSu001 > 1 || $qtd_barsSu001 == 2):
+//                 return $weight_su001mmBar * 2;
+//                 break;
+
+//                 case ($qtd_barsSu001 > 2 || $qtd_barsSu001 == 3):
+//                    return  $weight_su001mmBar * 3;
+//                     break;
+//         default:
+//             // Calcular peso proporcional
+//             $weight_bars = 'Peso Proporcional';
+//             break;
+//     }
+// }
+
+// //calcula o peso por barras considerando 1 barra inteira
+// private function calculateWeightBarsSu002($qtd_barsSu002, $weight_su002mmBar) {
+//     switch (true) {
+//         case ($qtd_barsSu002 <= 1):
+//             return $weight_su002mmBar;
+//             break;
+//             case ($qtd_barsSu002 > 1 || $qtd_barsSu002 == 2):
+//                 return $weight_su002mmBar * 2;
+//                 break;
+
+//                 case ($qtd_barsSu002 > 2 || $qtd_barsSu002 == 3):
+//                    return  $weight_su002mmBar * 3;
+//                     break;
+//         default:
+//             // Calcular peso proporcional
+//             $weight_bars = 'Peso Proporcional';
+//             break;
+//     }
+// }
+
+// //calcula o peso por barras considerando 1 barra inteira
+// private function calculateWeightBarsSu007($qtd_barsSu007, $weight_su007mmBar) {
+//     switch (true) {
+//         case ($qtd_barsSu007 <= 1):
+//             return $weight_su007mmBar;
+//             break;
+//             case ($qtd_barsSu007 > 1 || $qtd_barsSu007== 2):
+//                 return $weight_su007mmBar * 2;
+//                 break;
+
+//                 case ($qtd_barsSu007 > 2 || $qtd_barsSu007 == 3):
+//                    return  $weight_su007mmBar * 3;
+//                     break;
+//         default:
+//             // Calcular peso proporcional
+//             $weight_bars = 'Peso Proporcional';
+//             break;
+//     }
+// }
+
+private function storeModel2() {
+    // Realizar operações específicas para o modelo "Suprema 2 folhas vidr"
+    $this->image = asset('img/imagesEsquadrias/janelas.jpg');
+
+    $item = $this->modeloSelect.'10';
+
+
+    Project::create([
+
+        'item' => $item,
+        'width' => $this->width,
+        'height' => $this->height,
+        'qtd' => $this->qtd,
+        'line' => 'Suprema',
+        'ref' => $this->ref,
+        'image' => $this->image,
+        'cliente_id' => $this->cliente_id,
+        'local' => $this->local,
+        'folga_inst' => $this->folga_inst,
+        'contramarco' => $this->contramarco,
+        'color_esquadrias' => $this->color_esquadrias,
+        'color_acessorio' => $this->color_acessorio,
+        'type_glass' => $this->type_glass,
+        'obs' => $this->obs
+    ]);
+    $this->reset();
+}
+
+    public function render()
+    {
+
+        $tipologies = Tipology::all();
+
+        
+        return view('livewire.new-project', compact('tipologies'));
+    }
+
+
+    
+
+
+    
+}
