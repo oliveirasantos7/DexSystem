@@ -224,6 +224,8 @@ class ProjectsIndex extends Component
     public $cuttingDesignData;
     public $modelo;
 
+
+
     public function showEditModal($id)
     {
         $this->project = Project::findOrFail($id);
@@ -299,8 +301,8 @@ class ProjectsIndex extends Component
             $cuttingDesign = CuttingDesign::findOrFail($data['id']);
             $newSize = $this->calculateNewSize($data['profile']);
             $newQtdProfile = $this->calculateQtdProfile($this->qtd, $data['profile']);
-            $newQtdMt = $this->calculateQtdMt($this->width, $this->height, $this->qtd);
-            $newQtdBars = $this->calculateQtdBars($newQtdMt);
+            $newQtdMt = $this->calculateQtdMt($data['profile'], $this->qtd );
+            $newQtdBars = $this->calculateQtdBars($data['profile']);
             $newWeightMt = $this->calculateWeightMt($newQtdMt);
             $newWeightBars = $this->calculateWeightBars($newQtdBars);
 
@@ -321,30 +323,7 @@ class ProjectsIndex extends Component
         $this->reset();
     }
 
-    // private function calculateNewSize($profile)
-    // {
-    //     if ($this->item !== 'Janela suprema 2 folhas vidro') {
-    //         return 2; // Default size if item does not match
-    //     }
-        
-
-    //     switch ($profile) {
-    //         case 'Su-001':
-    //         case 'Su-002':
-    //            return $this->contramarco ? ($this->width - 32) - 26 : $this->width - 26;
-    //         case 'Su-007':
-    //             return $this->contramarco ? $this->height - 32 : $this->height;
-
-    //         case 'Su-008':
-    //             return $this->contramarco ? ($this->height - 32) - 30 : $this->height - 30;
-
-    //         case 'Su-053':
-    //             return $this->contramarco ? (($this->width - 32) - 141.2) / 2 : ($this->width - 141.2) / 2 ;
-    //         // Adicione outros casos específicos conforme necessário
-    //         default:
-    //             return 2;
-    //     }
-    // }
+   
 
     public function calculateNewSize($profile) {
         switch ($this->item) {
@@ -367,10 +346,6 @@ class ProjectsIndex extends Component
                 return 2; // Tamanho padrão se o item não corresponder
         }
     }
-
-
-
-   
 
     protected function calculateQtdProfile($qtd, $profile)
     {
@@ -396,16 +371,79 @@ class ProjectsIndex extends Component
         }
     }
 
-    protected function calculateQtdMt($width, $height, $qtd)
-    {
-        return ($width + $height) * $qtd; // Exemplo: perímetro vezes quantidade
-    }
 
-    protected function calculateQtdBars($qtdMt)
+    protected function calculateQtdMt($profile)
     {
-        return ceil($qtdMt / 6); // Exemplo: cada barra tem 6 metros
-    }
+          // return $qtd * 2; // Exemplo: 2 perfis por item
+          switch ($this->item) {
+            case 'Janela suprema 2 folhas vidro':
+        switch ($profile) {
+            case 'Su-001':
+            case 'Su-002':
+                return (($this->contramarco ? ($this->width - 32) - 26 : $this->width - 26) * $this->qtd);
+                
+            case 'Su-007':
+            return ((($this->contramarco ? ($this->width - 32) - 26 : $this->width - 26) * $this->qtd) * 2);
 
+                
+            case 'Su-008':
+            return ((($this->contramarco ? ($this->height - 32) - 30 : $this->height - 30) * $this->qtd) * 2);
+
+
+                
+            case 'Su-053':
+            return ((($this->contramarco ? (($this->width - 32) - 141.2) / 2 : ($this->width - 141.2) / 2) * $this->qtd) * 4);
+
+
+            
+                
+            // Adicione outros casos específicos conforme necessário
+            default:
+                return 2;
+        }
+        default:
+    }
+        return 2; // Tamanho padrão se o item não corresponder
+        }
+
+    protected function calculateQtdBars($profile)
+    {
+        
+          // return $qtd * 2; // Exemplo: 2 perfis por item
+          switch ($this->item) {
+            case 'Janela suprema 2 folhas vidro':
+        switch ($profile) {
+            case 'Su-001':
+            case 'Su-002':
+                return ceil((($this->contramarco ? ($this->width - 32) - 26 : $this->width - 26) * $this->qtd / 6000));
+                
+            case 'Su-007':
+            return ceil(((($this->contramarco ? ($this->width - 32) - 26 : $this->width) * $this->qtd) * 2) / 6000);
+
+                
+            case 'Su-008':
+            return ceil((($this->contramarco ? ($this->height - 32) - 30 : $this->height - 30) * $this->qtd * 2) / 6000) ;
+            
+
+
+                
+            case 'Su-053':
+            return ceil(((($this->contramarco ? (($this->width - 32) - 141.2) / 2 : ($this->width - 141.2) / 2)) * $this->qtd * 4) / 6000);
+
+            
+
+
+            
+                
+            // Adicione outros casos específicos conforme necessário
+            default:
+                return 2;
+        }
+        default:
+        return 2; // Tamanho padrão se o item não corresponder
+        }
+    }
+// -------------------------------------------------------------------------------------------------------
     protected function calculateWeightMt($qtdMt)
     {
         return $qtdMt * 0.5; // Exemplo: 0.5 kg por metro
@@ -415,6 +453,7 @@ class ProjectsIndex extends Component
     {
         return $qtdBars * 3; // Exemplo: cada barra pesa 3 kg
     }
+// -------------------------------------------------------------------------------------------------------
 
   
     public function newProject($clienteId)

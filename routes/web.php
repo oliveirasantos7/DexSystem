@@ -13,6 +13,8 @@ use App\Livewire\NewProject;
 use App\Livewire\ProjectDetail;
 use App\Livewire\Projects;
 use App\Livewire\ProjectsIndex;
+use App\Livewire\SearchStock;
+use App\Livewire\StockSearch;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,12 @@ Route::middleware([
     Route::get('/projeto/edit/{project_id}', EditProject::class)->name('edit.novo');
     Route::get('/projeto/novo/janelas', NewJanelas::class)->name('projetos.novo.janelas');
     Route::post('/dashboard', [Dashboard::class, 'deleteMultiples'])->name('delete.multiples');
+    // Route::get('/search_stock/{project_id}', [SearchStock::class])->name('search.stock');
+    // Route::get('/search_stock',[SearchStock::class])->name('search.stock');
+    Route::get('/estoque/search/{project_id}',StockSearch::class)->name('stock.search');
+
+    
+
 
 
 });
