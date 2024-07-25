@@ -1,24 +1,23 @@
 <div class="text-white">
     <div>
-        <h1>Perfis Necessários</h1>
-        <ul>
+        <h1>Perfis Disponiveis</h1>
+        {{-- <ul>
             @foreach($profilesNeeded as $profile)
                 {{-- <li>{{ $profile }} </li> --}}
-                {{ $profile['profile'] }} - <br>
-                Tamanho: {{ $profile['size'] }},<br> 
+                {{-- {{ $profile['profile'] }} - <br>
+                Tamanho: {{ $profile['size'] }}-<br> 
                 Cor: {{ $profile['color'] }}, <br>
                 Linha: {{ $profile['line'] }} <br>
                 <br>
-            @endforeach
+            @endforeach --}}
         </ul>
     
         <br>
-        <br>
+        <br> 
         @if($profilesAvailable->isNotEmpty())
-            <h2>Perfis Disponíveis no Estoque</h2>
             <ul>
                 @foreach($profilesAvailable as $profile)
-                    <li>{{ $profile->perfil }} - Quantidade: {{ $profile->qtd }} Localizaçã: {{ $profile->loca }} Tamanho: {{ $profile->tamanho }}</li>
+                    <li>{{ $profile->perfil }} --- Quantidade: {{ $profile->qtd }}-- Localizaçã: {{ $profile->loca }}-- Tamanho: {{ $profile->tamanho }}</li>
                 @endforeach
             </ul>
         @else
