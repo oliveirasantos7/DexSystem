@@ -8,6 +8,7 @@ use App\Models\CuttingDesign;
 use App\Models\Glasses;
 use App\Models\Project;
 use Livewire\Component;
+use Illuminate\Support\Facades\Redirect;
 
 class ProjectDetail extends Component
 {
@@ -17,6 +18,7 @@ class ProjectDetail extends Component
     public $glasses;
     public $project;
     public $client;
+    public $project_id;
 
     public function mount($id)
     {
@@ -31,6 +33,23 @@ class ProjectDetail extends Component
         // dd($this->client);
 
     }
+    public function SearchStock($project_id){
+        // dd('hello');
+
+        // return redirect()->route('stock.search');
+        return redirect()->route('stock.search', ['project_id' => $project_id]);
+
+    }
+
+   
+
+    // public function SearchStock($project_id)
+    // {
+    //     $this->project_id = $project_id;
+    //     return redirect()->route('search.stock', ['project_id' => $project_id]);
+
+    //     // dd($project_id);
+    // }
 
     public function render()
     {

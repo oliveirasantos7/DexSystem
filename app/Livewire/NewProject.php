@@ -180,21 +180,21 @@ private function storeSuprema2folhas() {
         $qtd_barsCm060Height = ceil((($sizeCm060height * $this->qtd) * 2) / $bar);
 
 
-        //quantidade em metros
-        $qtd_mtSu001 = (($sizeWidthSu001 * $this->qtd) / 1000) . ' MT';
+        //quantidade total
+        $qtd_mtSu001 = ($sizeWidthSu001 * $this->qtd);
         $qtd_mtSu002 = $qtd_mtSu001; // Mesmo que Su-001
-        $qtd_mtSu007 = (($sizeSu007 * ($this->qtd * 2)) / 1000) . ' MT';
-        $qtd_mtSu008 = (($sizeSu008 * ($this->qtd * 2)) / 1000) . ' MT';
-        $qtd_mtSu053 = (($sizeSu053 * ($this->qtd * 4)) / 1000) . ' MT';
-        $qtd_mtSu039 = (($sizeSu039 * ($this->qtd * 2)) / 1000) . ' MT';
-        $qtd_mtSu040 = (($sizeSu040 * $this->qtd ) / 1000) . ' MT';
-        $qtd_mtSu041 = (($sizeSu040 * $this->qtd ) / 1000) . ' MT';
-        $qtd_mtSu102Width = (($sizeSu102Width * ($this->qtd * 4)) / 1000) . ' MT';
-        $qtd_mtSu102Height = (($sizeSu102height * ($this->qtd * 4)) / 1000) . ' MT';
-        $qtd_mtMp347Width = (($sizeMp347Width * ($this->qtd * 2)) / 1000) . ' MT';
-        $qtd_mtMp347Height = (($sizeMp347height * ($this->qtd * 2)) / 1000) . ' MT';
-        $qtd_mtCm060Width = (($sizeCm060Width * ($this->qtd * 2)) / 1000) . ' MT';
-        $qtd_mtCm060Height = (($sizeCm060height * ($this->qtd * 2)) / 1000) . ' MT';
+        $qtd_mtSu007 = ($sizeSu007 * ($this->qtd * 2));
+        $qtd_mtSu008 = ($sizeSu008 * ($this->qtd * 2));
+        $qtd_mtSu053 = ($sizeSu053 * ($this->qtd * 4));
+        $qtd_mtSu039 = ($sizeSu039 * ($this->qtd * 2));
+        $qtd_mtSu040 = ($sizeSu040 * $this->qtd );
+        $qtd_mtSu041 = ($sizeSu040 * $this->qtd );
+        $qtd_mtSu102Width = ($sizeSu102Width * ($this->qtd * 4));
+        $qtd_mtSu102Height = ($sizeSu102height * ($this->qtd * 4));
+        $qtd_mtMp347Width = ($sizeMp347Width * ($this->qtd * 2));
+        $qtd_mtMp347Height = ($sizeMp347height * ($this->qtd * 2));
+        $qtd_mtCm060Width = ($sizeCm060Width * ($this->qtd * 2));
+        $qtd_mtCm060Height = ($sizeCm060height * ($this->qtd * 2));
 
 
         //peso da quantidade em metros
@@ -227,9 +227,9 @@ private function storeSuprema2folhas() {
         $weight_barsSu102Height = $qtd_barsSu102Height * $weight_su102mmBar;
         $weight_barsMp347Width = $qtd_barsMp347Width * $weight_mp347mmBar;
         $weight_barsMp347Height = $qtd_barsMp347Height * $weight_mp347mmBar;
-        $weight_barsCm060Width = $qtd_barsCm060Width * $weight_cm060mmBar;
         $weight_barsCm060Height = $qtd_barsCm060Height * $weight_cm060mmBar;
-
+        
+        $weight_barsCm060Width = $qtd_barsCm060Width * $weight_cm060mmBar;
         $project = Project::create([
             
             'item' => $this->modeloSelect,

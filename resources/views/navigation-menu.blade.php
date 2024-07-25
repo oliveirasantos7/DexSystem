@@ -17,16 +17,25 @@
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('estoque.index') }}" :active="request()->routeIs('estoque.index')">
-                        {{ __('Estoque') }}
+                        {{ __('Estoque de aluminio') }}
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('projetos.index') }}" :active="request()->routeIs('projetos.index')">
                         {{ __('Projetos') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('estoque.index')">
+                    <x-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('client.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('estoque.index')">
+                        {{ __('Frota') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('estoque.index')">
+                        {{ __('Estoque de acessorios') }}
+                    </x-nav-link>
+                    
                 </div>
 
                
