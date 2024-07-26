@@ -40,26 +40,31 @@ class StockSearch extends Component
         $this->profilesNeeded = $cuttingDesigns->map(function ($item) use($projectInfo) {
             return [
                 'profile' => $item->profile,
+                'image' =>$item->image,
                 'size' =>str_replace('.', ',',$item->size / 10),
                 'color' => $projectInfo->color_esquadrias, // Ajuste conforme necessário
                 'line' => $projectInfo->line,    // Ajuste conforme necessário
             ];
         })->toArray();
 
+        
+
         // Buscar perfis disponíveis no Stock que correspondem aos perfis necessários
         $this->profilesAvailable = Stock::where(function ($query) {
             foreach ($this->profilesNeeded as $needed) {
                 $query->orWhere(function ($q) use ($needed) {
                     $q->where('perfil', $needed['profile'])
-                      ->where('tamanho', '>=', $needed['size'] )
+                      ->where('tamanho', '>=', $needed['size'])
                       ->where('cor',  $needed['color'])
                       ->where('linha', $needed['line']);
                 });
             }
         })->get();
-    }
 
-        
+
+        // dd($this->profilesAvailable);
+
+    }
 
 
         
