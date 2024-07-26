@@ -40,7 +40,7 @@ class StockSearch extends Component
         $this->profilesNeeded = $cuttingDesigns->map(function ($item) use($projectInfo) {
             return [
                 'profile' => $item->profile,
-                'size' => $item->size,
+                'size' =>str_replace('.', ',',$item->size / 10),
                 'color' => $projectInfo->color_esquadrias, // Ajuste conforme necessário
                 'line' => $projectInfo->line,    // Ajuste conforme necessário
             ];
@@ -51,7 +51,7 @@ class StockSearch extends Component
             foreach ($this->profilesNeeded as $needed) {
                 $query->orWhere(function ($q) use ($needed) {
                     $q->where('perfil', $needed['profile'])
-                      ->where('tamanho', '>=', $needed['size'])
+                      ->where('tamanho', '>=', $needed['size'] )
                       ->where('cor',  $needed['color'])
                       ->where('linha', $needed['line']);
                 });
